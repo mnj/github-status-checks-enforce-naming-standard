@@ -1,0 +1,30 @@
+name: 'github-status-checks-enforce-naming-standard'
+description: 'Makes sure the naming standard is followed'
+author: 'Michael N. Jensen <michael.jensen@dustin.dk>'
+
+inputs:
+  require_lowercase_filenames:
+    description: 'Whether all files must be lower case'
+    required: true
+    default: 'true'
+  require_lowercase_folders:
+    description: 'Whether all folders must be lower case'
+    required: true
+    default: 'true'
+  excluded_files:
+    description: 'JSON list of files to exclude from the checks'
+    required: false
+    default: '["README.md"]'
+  excluded_folders:
+    description: 'JSON list of folders to exclude from the checks'
+    required: false
+    default: '[]'
+  github_token:
+    required: false
+    description: 'The GITHUB_TOKEN'
+
+runs:
+  using: "composite"
+  steps:
+    - run: python3 ${{ github.action_path }}/main.py "${{ inputs.require_lowercase_filenames }}" "${{ inputs.require_lowercase_folders }}" "'${{ inputs.excluded_files }}'" "'${{ inputs.excluded_folders }}'" "${{ inputs.github_token }}" 
+      shell: bash
