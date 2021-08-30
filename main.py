@@ -30,8 +30,6 @@ require_lowercase_folders = bool(strtobool(sys.argv[2])) if len(sys.argv) >= 3 e
 excluded_files = to_json_list(sys.argv[3]) if len(sys.argv) >= 4 else to_json_list('[]')
 excluded_folders = to_json_list(sys.argv[4]) if len(sys.argv) >= 5 else to_json_list('[]')
 github_token = sys.argv[5] if len(sys.argv) >= 6 else None
-# print(f"DEBUG - Excluded files: {excluded_files}")
-# print(f"DEBUG - Excluded folders: {excluded_files}")
 
 ##### Functions #####
 def get_pull_request_json():
@@ -47,7 +45,7 @@ def get_pull_request_json():
             # Open the event json file, and parse it with json
             with open(os.environ['GITHUB_EVENT_PATH'], 'r') as event_file:
                 event_data = json.load(event_file)
-                pprint.pprint(event_data)
+                
                 # Check that we are actually running on a pull request status check
                 if "pull_request" in event_data:
                     return event_data['pull_request']
