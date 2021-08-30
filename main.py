@@ -120,6 +120,7 @@ def check_files_and_folders(pull_request_url):
                         # Check if its a excluded file
                         if filename not in excluded_files:
                             if not filename.islower():
+                                print("File breaking the policy: {filename}")
                                 valid = False
                     
                     if require_lowercase_folders:
@@ -127,6 +128,7 @@ def check_files_and_folders(pull_request_url):
                         if len(foldername) >0:
                             if foldername not in excluded_folders:
                                 if not foldername.islower():
+                                    print("Folder breaking the policy: {foldername}")
                                     valid = False
             else:
                 raise SystemExit('Did not find the expected element: status in the JSON response')
