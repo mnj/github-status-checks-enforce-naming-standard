@@ -7,6 +7,7 @@ import requests
 from distutils.util import strtobool
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
+import pprint
 
 # Expected script args:
 # sys.argv[1] - Require lower case files (bool)
@@ -46,7 +47,7 @@ def get_pull_request_json():
             # Open the event json file, and parse it with json
             with open(os.environ['GITHUB_EVENT_PATH'], 'r') as event_file:
                 event_data = json.load(event_file)
-                print(event_data)
+                pprint.pprint(event_data)
                 # Check that we are actually running on a pull request status check
                 if "pull_request" in event_data:
                     return event_data['pull_request']
