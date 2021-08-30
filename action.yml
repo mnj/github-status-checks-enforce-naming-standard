@@ -16,7 +16,7 @@ inputs:
     required: false
     default: '["README.md"]'
   excluded_folders:
-    description: 'JSON list of folders to exclude from the checks'
+    description: 'JSON list of folders to exclude from the checks, this should include the full path like folder1/folder2 as seen from the root of the repo'
     required: false
     default: '[]'
   github_token:
