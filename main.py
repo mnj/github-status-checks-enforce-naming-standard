@@ -46,7 +46,7 @@ def get_pull_request_json():
             # Open the event json file, and parse it with json
             with open(os.environ['GITHUB_EVENT_PATH'], 'r') as event_file:
                 event_data = json.load(event_file)
-                
+                print(event_data)
                 # Check that we are actually running on a pull request status check
                 if "pull_request" in event_data:
                     return event_data['pull_request']
@@ -63,4 +63,4 @@ if __name__ == '__main__':
 
     pull_request_json = get_pull_request_json()
 
-    
+
