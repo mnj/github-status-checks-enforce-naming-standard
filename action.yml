@@ -26,5 +26,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: python3 ${{ github.action_path }}/main.py "${{ inputs.require_lowercase_filenames }}" "${{ inputs.require_lowercase_folders }}" "'${{ inputs.excluded_files }}'" "'${{ inputs.excluded_folders }}'" "${{ inputs.github_token }}" 
+    - run: python3 ${{ github.action_path }}/main.py "${{ inputs.require_lowercase_filenames }}" "${{ inputs.require_lowercase_folders }}" '${{ inputs.excluded_files }}' '${{ inputs.excluded_folders }}' "${{ inputs.github_token }}" 
       shell: bash
