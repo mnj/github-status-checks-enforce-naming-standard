@@ -118,8 +118,9 @@ def check_files_and_folders(pull_request_url):
 
                     if require_lowercase_files:
                         # Check if its a excluded file
-                        if filename not in excluded_files:
-                            if not filename.islower():
+                        if basename not in excluded_files:
+                            if not basename.islower():
+                                # Print whole path for easier debugging
                                 print(f"File breaking the policy: {filename}")
                                 valid = False
                     
